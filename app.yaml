@@ -1,8 +1,16 @@
-application: helloworld
+application: avid-involution-801
 version: 1
-runtime: php
+runtime: python
 api_version: 1
 
 handlers:
-- url: /.*
-  script: index.html
+- url: /(.*\.(gif|png|jpg|ico|js|css))
+  static_files: \1
+  upload: (.*\.(gif|png|jpg|ico|js|css))
+
+- url: /robots.txt
+  static_files: robots.txt
+  upload: robots.txt 
+
+- url: .*
+  script: main.py
