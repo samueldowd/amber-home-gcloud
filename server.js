@@ -1,5 +1,14 @@
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World from Cloud9\n');
-}).listen(process.env.PORT);
+console.log("starting");
+var port = process.env.PORT || 5000;
+process.env.PWD = process.cwd()
+
+var express = require("express");
+
+var app = express();
+
+app.use(express.static(process.env.PWD)); 
+app.get("/", function(request, response) {
+    response.send("Hello SVS!");
+});
+
+app.listen(port);
